@@ -9,9 +9,9 @@
 SELECT
     ROUND(
         AVG(
-            ST_Distance(
+            ST_DISTANCE(
                 geog,
-                ST_MakePoint(-75.192584, 39.952415)::geography
+                ST_MAKEPOINT(-75.192584, 39.952415)::geography
             )
         ) / 1000
     ) AS avg_distance_km

@@ -22,15 +22,17 @@ WITH morning_starts AS (
         start_time
     FROM indego.trips_2022_q3
 )
+
 SELECT
     s.id AS station_id,
     s.geog AS station_geog,
     COUNT(*) AS num_trips
-FROM morning_starts t
-JOIN indego.station_statuses s
+FROM morning_starts AS t
+INNER JOIN indego.station_statuses AS s
     ON t.start_station = s.name
-WHERE EXTRACT(HOUR FROM t.start_time) >= 7
-  AND EXTRACT(HOUR FROM t.start_time) < 10
+WHERE
+    EXTRACT(HOUR FROM t.start_time) >= 7
+    AND EXTRACT(HOUR FROM t.start_time) < 10
 GROUP BY
     s.id,
     s.geog

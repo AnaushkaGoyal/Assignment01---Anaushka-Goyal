@@ -13,22 +13,10 @@
 SELECT
     ROUND(
         (
-            (COUNT_2022 - COUNT_2021) * 100.0
-        ) / COUNT_2021,
+            (T2022.COUNT_2022 - T2021.COUNT_2021) * 100.0
+        ) / T2021.COUNT_2021,
         2
-    ) AS perc_change
+    ) AS PERC_CHANGE
 FROM
-    (SELECT COUNT(*) AS COUNT_2021 FROM indego.trips_2021_q3) t2021,
-    (SELECT COUNT(*) AS COUNT_2022 FROM indego.trips_2022_q3) t2022;
-
-
-
-/*
-    If you want to get fancier here, you can cast the result to a string and
-    concatenate a '%' to the end. For example:
-
-        (10 + 3.2)::text || '%' AS perc_change
-
-    This uses the type casting (number to string) and string concatenation
-    operator (`||`, double pipes) that's essentially a `+` for strings.
-*/
+    (SELECT COUNT(*) AS COUNT_2021 FROM INDEGO.TRIPS_2021_Q3) AS T2021,
+    (SELECT COUNT(*) AS COUNT_2022 FROM INDEGO.TRIPS_2022_Q3) AS T2022;

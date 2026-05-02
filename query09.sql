@@ -18,6 +18,6 @@ FROM (
 
     SELECT passholder_type
     FROM indego.trips_2022_q3
-) all_trips
+) AS all_trips
 GROUP BY passholder_type
 ORDER BY num_trips DESC;

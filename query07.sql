@@ -25,7 +25,6 @@ WHERE start_time::date <> end_time::date
 ORDER BY trip_year, trip_quarter;
 
 
-
 /*
 
     Hint 1: when you cast a TIMESTAMP to a DATE the time component of the value is simply stripped off
