@@ -12,7 +12,7 @@ SELECT
     3 AS trip_quarter,
     COUNT(*) AS num_trips
 FROM indego.trips_2021_q3
-WHERE duration < 600
+WHERE duration < 10
 
 UNION ALL
 
@@ -21,5 +21,5 @@ SELECT
     3 AS trip_quarter,
     COUNT(*) AS num_trips
 FROM indego.trips_2022_q3
-WHERE duration < 600
+WHERE duration < 10
 ORDER BY trip_year, trip_quarter;

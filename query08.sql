@@ -29,7 +29,7 @@ SELECT
     COUNT(*) AS num_trips
 FROM morning_starts AS t
 INNER JOIN indego.station_statuses AS s
-    ON t.start_station = s.name
+    ON t.start_station = s.id::TEXT
 WHERE
     EXTRACT(HOUR FROM t.start_time) >= 7
     AND EXTRACT(HOUR FROM t.start_time) < 10
@@ -39,9 +39,3 @@ GROUP BY
 ORDER BY
     num_trips DESC
 LIMIT 5;
-
-
-/*
-    Hint: Use the `EXTRACT` function to get the hour of the day from the
-    timestamp.
-*/
